@@ -30,7 +30,7 @@ Client side for [Notec project](https://github.com/kononiuk/notec).
 
 There is currently a configuration in .env. It passes only one parameter VUE_APP_ROOT_API with the server API address is specified.
 
-    VUE_APP_ROOT_API=your_server_api_link
+    REACT_APP_API_ADDRESS=your_server_api_link
 
 ## Usage
 
