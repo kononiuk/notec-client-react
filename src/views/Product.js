@@ -15,7 +15,7 @@ function Product() {
     }
 
     async function getProductData() {
-      axios.get('http://localhost:3030/products', { params: url})
+      axios.get(process.env.REACT_APP_API_ADDRESS + 'products', { params: url})
         .then((response) => {
           if (!response.data.length) {
             return notFoundRedirect();

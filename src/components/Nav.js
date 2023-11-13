@@ -8,7 +8,7 @@ function Nav() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get('http://localhost:3030/categories')
+    axios.get(process.env.REACT_APP_API_ADDRESS + 'categories')
       .then((response) => {
         setCategories(response.data);
         setLoading(false);

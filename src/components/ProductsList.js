@@ -11,7 +11,7 @@ function ProductsList( productsListProp ) {
     if (!Object.keys(productsListProp).length || productsListProp.products.length) {
       const reqProductsList = productsListProp && productsListProp.products ? productsListProp.products : [];
 
-      axios.get('http://localhost:3030/products', { params: { productId: reqProductsList }})
+      axios.get(process.env.REACT_APP_API_ADDRESS + 'products', { params: { productId: reqProductsList }})
         .then((response) => {
           setProducts(response.data);
         })
