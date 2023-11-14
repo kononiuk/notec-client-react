@@ -1,7 +1,7 @@
 // src/ApiRequest.js
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 function Nav() {
   const [categories, setCategories] = useState([]);
@@ -25,7 +25,12 @@ function Nav() {
       ) : (
         <ul className="flex items-center h-full gap-2">
           {categories.map((category) => (
-            <li key={category.categoryId}><Link to={'category/' + category.url}>{category.name}</Link></li>
+            <li key={category.categoryId}>
+              <NavLink 
+                to={`/category/${category.url}`}>
+                  {category.name}
+              </NavLink>
+            </li>
           ))}
         </ul>
       )}

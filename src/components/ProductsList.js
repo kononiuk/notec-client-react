@@ -37,7 +37,7 @@ function ProductsList( productsListProp ) {
             {products.map((product) => (
               <li key={product.id} className="mb-2 p-4 bg-neutral-100 rounded">
                 <div className="product flex flex-col text-center">
-                  <Link to={'product/' + product.url}>{product.name}</Link>
+                  <Link to={`/product/${product.url}`}>{product.name}</Link>
                   <div className="price">{product.displayPrice}</div>
                   <div className="actions w-full">
                     {
