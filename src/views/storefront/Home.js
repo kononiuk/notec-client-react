@@ -1,4 +1,4 @@
-import ProductsList from '../components/ProductsList';
+import ProductsList from '../../components/ProductsList';
 
 function Home() {
   document.title = `Notec`;

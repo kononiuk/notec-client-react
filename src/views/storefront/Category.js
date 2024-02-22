@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
-import LoaderSpin from '../components/LoaderSpin';
-import ProductsList from '../components/ProductsList';
+import LoaderSpin from '../../components/LoaderSpin';
+import ProductsList from '../../components/ProductsList';
 
 function Category() {
-  const url = useParams();
+  const params = useParams();
   const navigate = useNavigate();
   const [category, setCategory] = useState({});
   const [loading, setLoading] = useState(true);
@@ -16,7 +16,7 @@ function Category() {
     }
 
     async function getCategoryData() {
-      await axios.get(process.env.REACT_APP_API_ADDRESS + 'categories', { params: url})
+      await axios.get(process.env.REACT_APP_API_ADDRESS + 'categories', { params: params.url})
         .then((response) => {
           if (!response.data.length) {
             return notFoundRedirect();
@@ -34,7 +34,7 @@ function Category() {
     }
 
     getCategoryData();
-  }, [url, navigate]);
+  }, [params, navigate]);
 
   return (
       <div className="flex flex-col items-stretch">

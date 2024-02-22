@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
-import LoaderSpin from '../components/LoaderSpin';
+import LoaderSpin from '../../components/LoaderSpin';
 
 function Product() {
   const url = useParams();

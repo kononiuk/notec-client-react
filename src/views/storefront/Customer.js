@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 import Cookies from 'js-cookie';
-import { saveCustomerData } from '../redux/reducers/customerSlice';
+import { saveCustomerData } from '../../redux/reducers/customerSlice';
 import { Tabs } from '@mui/base/Tabs';
 import { TabsList } from '@mui/base/TabsList';
 import { TabPanel } from '@mui/base/TabPanel';

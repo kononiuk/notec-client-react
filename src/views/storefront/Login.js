@@ -1,5 +1,5 @@
-import RegistrationForm from '../components/customer/RegistrationForm';
-import LoginForm from '../components/customer/LoginForm';
+import RegistrationForm from '../../components/customer/RegistrationForm';
+import LoginForm from '../../components/customer/LoginForm';
 
 function Login() {
   document.title = `Log In or Sign up`;
