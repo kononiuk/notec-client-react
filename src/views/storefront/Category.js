@@ -16,7 +16,7 @@ function Category() {
     }
 
     async function getCategoryData() {
-      await axios.get(process.env.REACT_APP_API_ADDRESS + 'categories', { params: params.url})
+      await axios.get(process.env.REACT_APP_API_ADDRESS + 'categories', { params: {url: params.url}})
         .then((response) => {
           if (!response.data.length) {
             return notFoundRedirect();

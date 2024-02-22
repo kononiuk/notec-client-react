@@ -14,7 +14,7 @@ const ProtectedAdminPanel = () => {
 
   useEffect(() => {
     if (!isAuthenticated()) {
-      navigate('/login');
+      navigate('/admin/login');
     }
   }, [navigate]);
 

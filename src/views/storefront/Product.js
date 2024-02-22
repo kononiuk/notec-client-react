@@ -4,7 +4,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import LoaderSpin from '../../components/LoaderSpin';
 
 function Product() {
-  const url = useParams();
+  const params = useParams();
   const navigate = useNavigate();
   const [product, setProduct] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -15,7 +15,7 @@ function Product() {
     }
 
     async function getProductData() {
-      axios.get(process.env.REACT_APP_API_ADDRESS + 'products', { params: url})
+      axios.get(process.env.REACT_APP_API_ADDRESS + 'products', { params: {url: params.url}})
         .then((response) => {
           if (!response.data.length) {
             return notFoundRedirect();
@@ -33,7 +33,7 @@ function Product() {
     }
 
     getProductData()
-  }, [url, navigate]);
+  }, [params, navigate]);
 
   return (
     <div>
