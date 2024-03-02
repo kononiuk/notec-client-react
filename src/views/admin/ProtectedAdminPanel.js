@@ -1,24 +1,52 @@
 import React, { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import AdminPanel from './AdminPanel';
+import { useNavigate, useLocation, Route, Routes } from 'react-router-dom';
+import axios from 'axios';
+import Login from './Login';
+import Layout from './Layout';
+import Dashboard from './Dashboard';
+import Customers from './Customers';
+import RedirectToAdmin from '../../components/admin/RedirectToAdmin';
 
-// This is a mock function, replace it with your actual authentication check
-const isAuthenticated = () => {
-  // Check if the user is authenticated
-  // Return true if authenticated, false otherwise
-  return true; // This is a placeholder
+
+const isAuthenticated = async () => {
+  try {
+    const response = await axios.get(process.env.REACT_APP_API_ADDRESS + 'admin/me', { withCredentials: true });
+    return response.data.isLogin;
+  } catch (error) {
+    return false;
+  }
 };
 
 const ProtectedAdminPanel = () => {
   const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
-    if (!isAuthenticated()) {
-      navigate('/admin/login');
-    }
-  }, [navigate]);
+    const validateSession = async () => {
+      const auth = await isAuthenticated();
 
-  return isAuthenticated() ? <AdminPanel /> : null;
+      if (!auth) {
+        navigate('/admin/login');
+      } else if (auth && location.pathname === '/admin/login') {
+        navigate('/admin/dashboard');
+      } else {
+        navigate(location.pathname);
+      }
+    };
+
+    validateSession();
+  }, [navigate, location.pathname]);
+
+  return (
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Dashboard />} />
+        <Route path="customers" element={<Customers />} />
+        <Route path="*" element={<RedirectToAdmin />} />
+      </Route>
+      <Route path="login" element={<Login />} />
+    </Routes>
+  );
 };
 
 export default ProtectedAdminPanel;
